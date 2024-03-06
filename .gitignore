@@ -1,0 +1,13 @@
+*
+
+!.gitignore
+!.config/i3/
+!.config/i3blocks/
+!.config/fusuma/
+!.tmux.conf
+!.zshrc
+!.tmuxifier/
+!.tmux
+!.oh-my-zsh
+!install.sh
+!README.md
