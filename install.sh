@@ -26,7 +26,6 @@ sudo snap instll \
 	simplenote \
 	obs-studio \
 	mailspring \
-	brave \
 	dart-sass \
 	hugo \
 	tmux --classic \
@@ -41,12 +40,12 @@ sudo mysql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
 exit
 
-# Edge
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
-sudo rm microsoft.gpg
-sudo apt update && sudo apt install microsoft-edge-stable
+# Brave
+sudo apt install curl
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt update
+sudo apt install -y brave-browser
 
 # Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -58,7 +57,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # Tmuxifier
 git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier
 
-#TPM
+# TPM
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Valet Linux
@@ -71,7 +70,7 @@ mkdir ~/Progetti
 cd ~/Progetti
 valet park
 
-git clone https://github.com/albertoreineri/TypeWrite-Laravel.git
+# git clone https://github.com/albertoreineri/TypeWrite-Laravel.git
 git clone https://github.com/albertoreineri/albertoreineri.github.io.git
 
 # Fusuma
